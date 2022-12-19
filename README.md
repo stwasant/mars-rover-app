@@ -44,3 +44,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+# API KEY
+pJIEKaW7q8VgUrIGviuxCw8sG4I7ndUUQVX5awzj
+https://api.nasa.gov/planetary/apod?api_key=pJIEKaW7q8VgUrIGviuxCw8sG4I7ndUUQVX5awzj
+
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=pJIEKaW7q8VgUrIGviuxCw8sG4I7ndUUQVX5awzj
+
+# DEPENDENCIES
+` npm install @mui/material @emotion/react @emotion/styled`
+`npm install @fontsource/roboto`
+`npm install @mui/icons-material`
+`npm install @reduxjs/toolkit react-redux`
+`npm install react-countdown --save`
