@@ -53,9 +53,8 @@ https://api.nasa.gov/planetary/apod?api_key=pJIEKaW7q8VgUrIGviuxCw8sG4I7ndUUQVX5
 https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=pJIEKaW7q8VgUrIGviuxCw8sG4I7ndUUQVX5awzj
 
 # DEPENDENCIES
-` npm install @mui/material @emotion/react @emotion/styled`
-`npm install @fontsource/roboto`
-`npm install @mui/icons-material`
-`npm install @reduxjs/toolkit react-redux`
-`npm install react-countdown --save`
-`nnpm i react-spinners`
+` npm install @mui/material @emotion/react @emotion/styled @fontsource/roboto @fontsource/roboto @mui/icons-material @reduxjs/toolkit react-redux react-spinners`
+
+## Authors
+
+- [@stwasant](https://github.com/stwasant)
