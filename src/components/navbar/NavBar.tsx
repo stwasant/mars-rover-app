@@ -1,64 +1,74 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeViewer6Photo, refreshingData } from '../../redux/handleImages';
+import { changeViewer6Photo } from '../../redux/handleImages';
+import { refreshingData } from '../../redux/handleRefreshing';
 // Style UI
-import { Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { Box, AppBar, Toolbar, Typography, Button, Stack } from '@mui/material';
 // Assets
 import Mars1 from '../../assets/icons/mars1.png';
-import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHooks';
-import viewerPhotoSlice from '../../redux/handleImages';
+import { RootState } from '../../redux/store';
+
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const flagShowViewerPhoto = useSelector((state: any) => state.viewerphotoslice.flagShow);
-
-  const dispatch2 = useAppDispatch()
-
-  const flagShowViewerPhoto2: number = useAppSelector((state: { viewerphotoslice: { flagShow: any } }) => state.viewerphotoslice.flagShow);
-   const refreshingData =  useSelector((state: any) => state.viewerphotoslice.refreshing);
-
-  console.log('flagShowViewerPhoto 2: ', flagShowViewerPhoto);
+  const currentRefreshingData = useSelector((state: RootState) => state.refreshing.value);
+  //
   const [flag, setFlag] = useState<boolean>(false);
-  const [counterRefreshing, setCounterRefreshing] = useState<number>(0);
 
-  const handleRefreshig = () => {
-    setCounterRefreshing((prev) => prev + 1);
-    // dispatch2(refreshingData(({refreshing:counterRefreshing})));
-    dispatch(refreshingData({ refreshing: counterRefreshing }));
+  const handleChangeViewer6Photo = () => {
+    setFlag((prev) => !prev);
+    dispatch(changeViewer6Photo({ valueScreen: !flag ? 4 : 6, flagShow: !flag }));
   };
 
-  useEffect(() => {
-    setFlag(!flag);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [flagShowViewerPhoto]);
+  const handleRefreshigData = () => {
+    dispatch(refreshingData({ refreshing: currentRefreshingData.refreshing + 1 }));
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='fixed' style={{ backgroundColor: '#2B3467' }}>
         <Toolbar variant='dense'>
           <img src={Mars1} alt='Logo' style={{ height: '90px', padding: '5px' }} />
-          <Typography variant='h4' component='div' sx={{ flexGrow: 1 }}>
+          <Typography
+            variant='h4'
+            component='div'
+            sx={{
+              mr: 2,
+              display: { xs:'none', sm: 'flex', md: 'flex', xl:'flex' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: {  xs: 200, md: 700, xl:800 },
+              fontSize: { xs:10 ,sm: 20, md: 25, xl: 35 },
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}>
             MARS ROVERS PHOTOS
           </Typography>
-          <div>
+          <Stack direction='row' spacing={1}>
             <Button
+              sx={{
+                fontSize:{xs:8, sm:12, md:15, xl:20}
+              }}
               variant='contained'
               size='medium'
               onClick={() => {
-                dispatch(changeViewer6Photo({ flagShow: flag }));
+                handleChangeViewer6Photo();
               }}>
-              {!flag ? 'Show 4 Pictures' : 'Show 6 Pictures'}
+              {!flag ? 'Show 6 Pictures' : 'Show 4 Pictures'}
             </Button>
             <Button
+              sx={{
+                fontSize:{xs:8, sm:12, md:15, xl:20}
+              }}
               variant='contained'
               size='medium'
               onClick={() => {
-                // dispatch(changeViewer6Photo({ refreshingData: flag }));
-                handleRefreshig();
+                handleRefreshigData();
               }}>
               Refresh pictures
             </Button>
-          </div>
+          </Stack>
         </Toolbar>
       </AppBar>
     </Box>

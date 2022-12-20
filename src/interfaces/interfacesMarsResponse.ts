@@ -1,7 +1,9 @@
 
 
 export interface InterfaceMarsResponse {
-    photos: Photo[];
+    data: {
+        photos: Photo[];
+    }
 }
 
 export interface Photo {

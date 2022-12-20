@@ -58,3 +58,4 @@ https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key
 `npm install @mui/icons-material`
 `npm install @reduxjs/toolkit react-redux`
 `npm install react-countdown --save`
+`nnpm i react-spinners`

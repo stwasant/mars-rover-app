@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { viewerPhotoSlice } from './handleImages'
+import { refreshingPhotoSlice } from './handleRefreshing'
 
 export const store = configureStore({
   reducer: {
-    viewerphotoslice: viewerPhotoSlice.reducer
+    viewerphotoslice: viewerPhotoSlice.reducer,
+    refreshing: refreshingPhotoSlice.reducer
   },
 })
 
